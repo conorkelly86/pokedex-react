@@ -3,7 +3,7 @@ import "./App.css";
 import PokemonThumbnail from "./components/PokemonThumbnail";
 
 function App() {
-  const [allPokemon, setAllPokemon] = useState([]);
+  const [allPokemon, setAllPokemon] = useState<any[]>([]);
   const [loadMore, setLoadMore] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit-20"
   );
@@ -12,8 +12,8 @@ function App() {
     const data = await res.json();
     setLoadMore(data.next);
 
-    function createPokemonObject(results) {
-      results.forEach(async (pokemon) => {
+    function createPokemonObject(results: any) {
+      results.forEach(async (pokemon: any) => {
         const res = await fetch(
           `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
         );
